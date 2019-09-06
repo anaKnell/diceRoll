@@ -12,7 +12,7 @@ class dice{
 					}
 				}
 			}
-		}
+		
 
 		$temp=array();
 
@@ -34,5 +34,6 @@ class dice{
 		return $resultFinal;
 		echo $resultFinal;
 	}
+		}
 
 }
