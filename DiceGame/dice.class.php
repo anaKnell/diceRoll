@@ -7,12 +7,11 @@ class dice{
 			$diceTab=array();			
 			foreach ($_POST as $key=> $value){
 				foreach($_POST as $key=> $value){
-					if($value==!0){
+					if($value !== 0){
 						$diceTab[$key] = $value;
 					}
 				}
 			}
-		
 
 		$temp=array();
 
@@ -24,6 +23,7 @@ class dice{
 				array_push($temp,$random);
 				array_push($tabRandom,$random);
 			}
+
 			$stringTab = implode(",",$tabRandom);
 			$displayResultat .= $max."d".$nb."[".$stringTab."]+";
 		}
@@ -32,8 +32,8 @@ class dice{
 		$sum =array_sum($temp);
 		$resultFinal = $displayResultat ." = ".$sum;
 		return $resultFinal;
-		echo $resultFinal;
-	}
-		}
 
-}
+
+	}
+
+}}
