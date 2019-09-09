@@ -36,9 +36,6 @@ Class DiceGame_widget extends WP_Widget{
 		else
 			$title = __( 'Default Title', 'DiceGame_widget_domain' );
 		?>
-		<p>
-			123 Charlie Unicorm
-			<p>
 				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
@@ -73,7 +70,7 @@ Class DiceGame_widget extends WP_Widget{
 				$sql = "CREATE TABLE `$table_name`
 				(
 				`id` int(11)PRIMARY KEY NOT NULL AUTO_INCREMENT,
-				`date` datetime NOT NULL,
+				`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 				`jet` text COLLATE utf8mb4_unicode_ci NOT NULL,
 				`userid` int(11) NOT NULL)
 				ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
@@ -88,15 +85,25 @@ Class DiceGame_widget extends WP_Widget{
 		$wpdb->query($sql);
 	}
 
+	
 	public function jet(){
 		
-		/*if(!empty($_POST)){
-			global $wpdb;
-			$date = new DateTime();
+
+		if(!empty($_POST)){
+			$user = get_current_user_id();
+			$dice = new dice;
+
+			$result = $dice->rollDice();
+			var_dump($result);
+			global $wpdb;	
+
 			$table_name = $wpdb->prefix . "lancerDes";
-			$wpdb->insert($table_name, array('id'=> 1,'date' => $date,'jet' =>$jet, 'userid' =>""));		}*/
-		
+
+			$data =array('jet' =>$result, 'userid' => $user);
+			$wpdb->insert($table_name, $data);
+		}
 	}
 
+
 }
-?>
+
