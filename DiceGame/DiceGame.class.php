@@ -54,7 +54,7 @@ Class DiceGame_widget extends WP_Widget{
 		if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
 //output
-		echo __( 'hello' , 'DiceGame_widget_domain' );
+
 		include('form.php');
 		echo $args['after_widget'];
 	}
@@ -89,14 +89,12 @@ Class DiceGame_widget extends WP_Widget{
 	}
 
 	public function jet(){
-		$dice = new dice;
-		$jet =$dice->rollDice();
-		if(!empty($_POST)){
+		
+		/*if(!empty($_POST)){
 			global $wpdb;
 			$date = new DateTime();
 			$table_name = $wpdb->prefix . "lancerDes";
-			$wpdb->insert($table_name, array('id'=> 1,'date' => $date,'jet' =>$jet, 'userid' =>""));
-		}
+			$wpdb->insert($table_name, array('id'=> 1,'date' => $date,'jet' =>$jet, 'userid' =>""));		}*/
 		
 	}
 
