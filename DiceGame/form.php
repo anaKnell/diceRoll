@@ -39,7 +39,7 @@
              </div>
             <input type="submit" id="roll-button" value="Lancer les dès"></input>
 
-            <div class="bigText">Resultat: <?php if (isset($_POST)){var_dump($result);echo $result;}?><br/>
+            <div class="bigText">Resultat: <?php if (isset($_POST)){echo do_shortcode( 'result' );?>}?><br/>
                 <span id="all-rolls" class="bigText grey"></span>
                 <span id="dice-roll"></span>
                 <br/>
